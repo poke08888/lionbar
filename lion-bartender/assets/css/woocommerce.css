@@ -1,0 +1,171 @@
+/* =========================================================
+   Lion Bartender — WooCommerce styling
+   Dark, gold-accented storefront to match the theme.
+   ========================================================= */
+
+.woocommerce-wrapper { padding-top: 16px; }
+
+/* Product grid */
+.woocommerce ul.products,
+.lb-products ul.products {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.woocommerce ul.products li.product,
+.lb-products ul.products li.product {
+  width: auto !important;
+  margin: 0 !important;
+  float: none !important;
+  background: var(--lb-charcoal);
+  border: 1px solid var(--lb-line);
+  border-radius: var(--lb-radius);
+  padding: 16px;
+  text-align: center;
+  transition: transform .25s ease, border-color .25s ease;
+}
+.woocommerce ul.products li.product:hover {
+  transform: translateY(-6px);
+  border-color: var(--lb-gold);
+}
+.woocommerce ul.products li.product a img {
+  border-radius: var(--lb-radius);
+  margin-bottom: 14px;
+}
+.woocommerce ul.products li.product .woocommerce-loop-product__title {
+  font-family: var(--lb-serif);
+  color: var(--lb-cream);
+  font-size: 1.15rem;
+  padding: 6px 0;
+}
+.woocommerce ul.products li.product .price {
+  color: var(--lb-gold) !important;
+  font-family: var(--lb-serif);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.woocommerce ul.products li.product .price del { color: var(--lb-muted) !important; opacity: .6; }
+.woocommerce ul.products li.product .onsale {
+  background: var(--lb-wine);
+  color: var(--lb-cream);
+  border-radius: 20px;
+  border: 0;
+}
+
+/* Buttons */
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button,
+.woocommerce #respond input#submit,
+.woocommerce a.button.alt,
+.woocommerce button.button.alt {
+  background: var(--lb-gold);
+  color: var(--lb-black);
+  font-family: var(--lb-sans);
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  border-radius: var(--lb-radius);
+  padding: 12px 26px;
+  border: 1px solid var(--lb-gold);
+  transition: all .2s ease;
+}
+.woocommerce a.button:hover,
+.woocommerce button.button:hover,
+.woocommerce input.button:hover,
+.woocommerce a.button.alt:hover {
+  background: var(--lb-gold-bright);
+  border-color: var(--lb-gold-bright);
+}
+
+/* Single product */
+.woocommerce div.product .product_title {
+  font-family: var(--lb-serif);
+  color: var(--lb-cream);
+}
+.woocommerce div.product p.price,
+.woocommerce div.product span.price {
+  color: var(--lb-gold);
+  font-family: var(--lb-serif);
+  font-size: 1.8rem;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li {
+  background: var(--lb-charcoal);
+  border-color: var(--lb-line);
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li.active {
+  background: var(--lb-charcoal-2);
+}
+.woocommerce .woocommerce-tabs .panel { color: var(--lb-cream); }
+
+/* Tables (cart / orders) */
+.woocommerce table.shop_table {
+  border-color: var(--lb-line);
+  background: var(--lb-charcoal);
+  border-radius: var(--lb-radius);
+}
+.woocommerce table.shop_table th,
+.woocommerce table.shop_table td {
+  border-color: var(--lb-line);
+  color: var(--lb-cream);
+}
+.woocommerce-cart table.cart img { border-radius: var(--lb-radius); }
+
+/* Notices */
+.woocommerce-message,
+.woocommerce-info,
+.woocommerce-error {
+  border-top-color: var(--lb-gold);
+  background: var(--lb-charcoal-2);
+  color: var(--lb-cream);
+}
+.woocommerce-message::before,
+.woocommerce-info::before { color: var(--lb-gold); }
+
+/* Result count / ordering */
+.woocommerce .woocommerce-result-count,
+.woocommerce .woocommerce-ordering { color: var(--lb-muted); }
+.woocommerce .woocommerce-ordering select {
+  background: var(--lb-charcoal-2);
+  color: var(--lb-cream);
+  border: 1px solid var(--lb-line);
+}
+
+/* Pagination */
+.woocommerce nav.woocommerce-pagination ul {
+  border-color: var(--lb-line);
+}
+.woocommerce nav.woocommerce-pagination ul li a,
+.woocommerce nav.woocommerce-pagination ul li span {
+  color: var(--lb-cream);
+}
+.woocommerce nav.woocommerce-pagination ul li span.current {
+  background: var(--lb-gold);
+  color: var(--lb-black);
+}
+
+/* Star ratings */
+.woocommerce .star-rating span::before,
+.woocommerce p.stars a { color: var(--lb-gold); }
+
+/* Forms */
+.woocommerce form .form-row label { color: var(--lb-cream); }
+.woocommerce form .form-row input.input-text,
+.woocommerce form .form-row textarea,
+.woocommerce-cart .coupon input {
+  background: var(--lb-charcoal-2);
+  border: 1px solid var(--lb-line);
+  color: var(--lb-cream);
+}
+
+@media (max-width: 980px) {
+  .woocommerce ul.products,
+  .lb-products ul.products { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .woocommerce ul.products,
+  .lb-products ul.products { grid-template-columns: 1fr; }
+}
