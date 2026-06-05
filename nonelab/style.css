@@ -1,0 +1,44 @@
+/*
+Theme Name: Nonelab
+Theme URI: https://nonelab.net/
+Author: Nonelab
+Author URI: https://nonelab.net/
+Description: A fast, trilingual (EN / VI / 中文) corporate theme for Nonelab Group — a Vietnamese beauty & wellness group. Editorial-split hero, scroll-reveal motion, parallax, count-up stats, brand marquee, partner walls and a working partnership-enquiry form. Built to load fast and run smoothly.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.7
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: nonelab
+Tags: corporate, business, one-column, custom-menu, footer-widgets, translation-ready, full-width-template
+*/
+
+/*
+ * The complete design system lives in assets/nonelab.css and is enqueued
+ * separately (see functions.php) so the browser can cache it independently
+ * of WordPress' generated styles. This file only carries the theme header
+ * plus a couple of WordPress-specific helpers.
+ */
+
+/* WordPress core helper classes ------------------------------------------ */
+.screen-reader-text{
+  border:0;clip:rect(1px,1px,1px,1px);-webkit-clip-path:inset(50%);clip-path:inset(50%);
+  height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-wrap:normal!important;
+}
+.screen-reader-text:focus{
+  background:#fff;border-radius:3px;box-shadow:0 0 2px 2px rgba(0,0,0,.6);
+  clip:auto!important;-webkit-clip-path:none;clip-path:none;color:#0B0B0C;display:block;
+  font-size:14px;font-weight:700;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;
+  text-decoration:none;top:5px;width:auto;z-index:100000;
+}
+.skip-link{position:absolute;left:-9999px;z-index:100001;}
+.skip-link:focus{left:6px;top:6px;}
+
+/* WordPress alignment / caption defaults (for any editor content) */
+.alignleft{float:left;margin:0 1.5em 1em 0;}
+.alignright{float:right;margin:0 0 1em 1.5em;}
+.aligncenter{display:block;margin-left:auto;margin-right:auto;}
+.wp-caption{max-width:100%;}
+.wp-caption-text{font-size:13.5px;color:#6E6A66;margin-top:6px;}
+.sticky,.gallery-caption,.bypostauthor{}

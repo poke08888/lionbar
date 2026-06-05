@@ -1,3 +1,20 @@
+# Nonelab — WordPress Themes
+
+> **Update (design now available).** The design link finally resolved to the
+> **Nonelab** corporate site bundle (`nonelab-web`) — a trilingual
+> (EN / VI / 中文) site for a Vietnamese beauty & wellness group, in which
+> *Lion Bartender* is just one of the in-house brands. That design has been
+> implemented faithfully as a new theme in **[`nonelab/`](nonelab/)** — see
+> [`nonelab/README.md`](nonelab/README.md) for install & details. It activates
+> with its five pages, menu and front page already wired up, and is built to
+> load fast (deferred scripts, split/cached assets, server-rendered chrome,
+> lazy images, preconnected fonts) with a working partnership-enquiry form.
+>
+> The original **Lion Bartender** theme below was an earlier interpretation
+> made while the design link returned HTTP 404; it is kept for reference.
+
+---
+
 # Lion Bartender — WordPress Theme + WooCommerce
 
 A bold, premium WordPress theme for a cocktail bar / bartender brand called
