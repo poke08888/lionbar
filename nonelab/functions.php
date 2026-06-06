@@ -419,6 +419,23 @@ remove_action( 'wp_head', 'rsd_link' );
 remove_action( 'wp_head', 'wlwmanifest_link' );
 remove_action( 'wp_head', 'wp_shortlink_wp_head' );
 
+/* -------------------------------------------------------------------------
+ * Favicons / app icons (brand orb). Output unless the site owner has set a
+ * WordPress Site Icon under Settings → General / Customize, which takes over.
+ * ---------------------------------------------------------------------- */
+function nonelab_favicons() {
+	if ( function_exists( 'has_site_icon' ) && has_site_icon() ) {
+		return;
+	}
+	$base = get_template_directory_uri() . '/assets/';
+	printf( '<link rel="icon" href="%s" sizes="any">' . "\n", esc_url( $base . 'favicon.ico' ) );
+	printf( '<link rel="icon" type="image/png" sizes="32x32" href="%s">' . "\n", esc_url( $base . 'favicon-32.png' ) );
+	printf( '<link rel="icon" type="image/png" sizes="16x16" href="%s">' . "\n", esc_url( $base . 'favicon-16.png' ) );
+	printf( '<link rel="apple-touch-icon" sizes="180x180" href="%s">' . "\n", esc_url( $base . 'favicon-180.png' ) );
+	printf( '<meta name="theme-color" content="#0B0B0C">' . "\n" );
+}
+add_action( 'wp_head', 'nonelab_favicons', 2 );
+
 /* Default meta description for the front page (matches the design). */
 function nonelab_meta_description() {
 	$desc = '';
