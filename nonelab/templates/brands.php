@@ -31,6 +31,7 @@ $contact_url = nonelab_page_url( 'contact' );
 				<div style="display:flex;gap:44px;margin-top:30px">
 					<div><div class="feature-num grad-text" style="font-size:clamp(34px,4vw,52px)"><span data-prefix="#" data-count="1">#1</span></div><div style="color:var(--muted);font-size:14px;margin-top:4px" data-i18n="br.nS1l">Men's care on e-commerce</div></div>
 				</div>
+				<a class="btn ghost" href="https://nerman.com.vn" target="_blank" rel="noopener" style="margin-top:26px"><span data-i18n="br.visit">Visit website</span><span class="arr">→</span></a>
 			</div>
 			<div class="reveal d1" style="border-radius:24px;height:clamp(300px,36vw,420px);background:#F4EEE6;display:flex;align-items:center;justify-content:center;padding:clamp(30px,4vw,52px)">
 				<img src="<?php echo esc_url( nonelab_asset( 'nerman-logo.png' ) ); ?>" alt="Nerman" style="max-width:66%;max-height:80px;object-fit:contain" />
@@ -44,6 +45,7 @@ $contact_url = nonelab_page_url( 'contact' );
 				<h2 class="section-title" style="font-size:clamp(34px,4.4vw,58px);margin:12px 0 18px" data-i18n="br.mName">Mistory</h2>
 				<p class="lead" style="max-width:480px" data-i18n="br.mDesc">A Vietnamese beauty brand celebrating the timeless essence of Vietnamese women.</p>
 				<div class="chip" style="margin-top:22px" data-i18n="br.mBadge">The timeless beauty of Vietnam</div>
+				<div><a class="btn ghost" href="https://mistory.vn" target="_blank" rel="noopener" style="margin-top:26px"><span data-i18n="br.visit">Visit website</span><span class="arr">→</span></a></div>
 			</div>
 			<div class="reveal d1" style="border-radius:24px;height:clamp(300px,36vw,420px);background:#F4EEE6;display:flex;align-items:center;justify-content:center;padding:clamp(30px,4vw,52px)">
 				<img src="<?php echo esc_url( nonelab_asset( 'mistory-logo.png' ) ); ?>" alt="Mistory" style="max-width:70%;max-height:140px;object-fit:contain" />
@@ -57,6 +59,7 @@ $contact_url = nonelab_page_url( 'contact' );
 				<h2 class="section-title" style="font-size:clamp(34px,4.4vw,58px);margin:12px 0 18px" data-i18n="br.lName">Lion Bartender</h2>
 				<p class="lead" style="max-width:480px" data-i18n="br.lDesc">A bold men's grooming line developed in-house by Nonelab.</p>
 				<div class="chip" style="margin-top:22px" data-i18n="br.lBadge">Developed in-house</div>
+				<div><a class="btn ghost" href="https://lionbartender.com" target="_blank" rel="noopener" style="margin-top:26px"><span data-i18n="br.visit">Visit website</span><span class="arr">→</span></a></div>
 			</div>
 			<div class="reveal d1" style="border-radius:24px;height:clamp(300px,36vw,420px);background:linear-gradient(135deg,#1a1206,#3a2a10);display:flex;align-items:center;justify-content:center;padding:clamp(30px,4vw,52px)">
 				<img src="<?php echo esc_url( nonelab_asset( 'lion-logo.png' ) ); ?>" alt="Lion Bartender" style="max-width:72%;max-height:240px;object-fit:contain" />
@@ -81,6 +84,7 @@ $contact_url = nonelab_page_url( 'contact' );
 				<div>
 					<div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap"><h3 style="color:#fff" data-i18n="br.menowName">Menow</h3><span style="color:#FFB877;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase" data-i18n="br.menowTag">Exclusive · Make-up</span></div>
 					<p style="color:rgba(255,255,255,.66);margin-top:10px;font-size:15.5px" data-i18n="br.menowDesc">China's most-loved makeup brand.</p>
+					<a href="https://menow.vn" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:7px;margin-top:14px;color:#FFB877;font-weight:700;font-size:14.5px"><span data-i18n="br.visit">Visit website</span> →</a>
 				</div>
 				<div style="display:flex;flex-direction:column;gap:14px">
 					<div><div class="feature-num grad-text" style="font-size:30px"><span data-count="500000">500,000</span></div><div style="color:rgba(255,255,255,.5);font-size:13px" data-i18n="br.menowS1">products sold</div></div>

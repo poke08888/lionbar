@@ -41,7 +41,8 @@ window.PAGE_I18N = {
     "br.idTag1":"Hair &amp; Body 4-in-1 Wash","br.idTag2":"Experience the cool sensation",
     "br.ctaT":"Want your brand on our shelves?",
     "br.ctaB":"Bring your brand to Vietnam and Southeast Asia with a partner that owns the full journey.",
-    "br.ctaBtn":"Partner with us"
+    "br.ctaBtn":"Partner with us",
+    "br.visit":"Visit website"
   },
   vi:{
     "br.eyebrow":"Thương hiệu",
@@ -84,7 +85,8 @@ window.PAGE_I18N = {
     "br.idTag1":"Hair &amp; Body 4-in-1 Wash","br.idTag2":"Experience the cool sensation",
     "br.ctaT":"Muốn thương hiệu của bạn lên kệ của chúng tôi?",
     "br.ctaB":"Đưa thương hiệu của bạn đến Việt Nam và Đông Nam Á cùng một đối tác làm chủ trọn hành trình.",
-    "br.ctaBtn":"Hợp tác cùng chúng tôi"
+    "br.ctaBtn":"Hợp tác cùng chúng tôi",
+    "br.visit":"Truy cập website"
   },
   zh:{
     "br.eyebrow":"我们的品牌",
@@ -127,6 +129,7 @@ window.PAGE_I18N = {
     "br.idTag1":"Hair &amp; Body 四合一洁净","br.idTag2":"Experience the cool sensation",
     "br.ctaT":"想让你的品牌进入我们的货架？",
     "br.ctaB":"与一个掌握完整旅程的伙伴一起，把你的品牌带到越南与东南亚。",
-    "br.ctaBtn":"与我们合作"
+    "br.ctaBtn":"与我们合作",
+    "br.visit":"访问官网"
   }
 };
