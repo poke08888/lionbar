@@ -1,4 +1,4 @@
-# Lion Bartender — WordPress Theme + WooCommerce
+# Lion Bartender V2 — WordPress Theme + WooCommerce
 
 A bold, premium WordPress theme for a cocktail bar / bartender brand called
 **Lion Bartender**, with full **WooCommerce** support so the business can sell
@@ -15,12 +15,12 @@ cocktail kits, spirits, glassware, gift cards and event packages online.
 
 ## What's included
 
-The theme lives in [`lion-bartender/`](lion-bartender/). Install it by copying
+The theme lives in [`lion-bartender-v2/`](lion-bartender-v2/). Install it by copying
 that folder into `wp-content/themes/` (or zip it and upload via
 **Appearance → Themes → Add New → Upload**).
 
 ```
-lion-bartender/
+lion-bartender-v2/
 ├── style.css              Theme header + full design system (CSS variables)
 ├── functions.php          Theme setup, WooCommerce support, enqueues, widgets
 ├── header.php             Fixed nav, brand emblem, mini-cart link
@@ -78,7 +78,7 @@ lion-bartender/
 ## Matching the design
 
 When the `Lion Bartender.html` design is available, align the theme by editing
-the tokens at the top of `lion-bartender/style.css`:
+the tokens at the top of `lion-bartender-v2/style.css`:
 
 ```css
 :root{
