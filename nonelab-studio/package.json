@@ -1,0 +1,20 @@
+{
+  "name": "nonelab-studio",
+  "version": "1.0.0",
+  "description": "Nonelab Studio — Gemini-powered short-form video analysis built on the Nonelab viral-video framework",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1"
+  },
+  "license": "MIT"
+}

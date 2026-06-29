@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nonelab Studio — Viral Video Analysis</title>
+  <meta name="description" content="Gemini-powered short-form video analysis built on the Nonelab viral framework: hook scoring, viral DNA, adversarial virality prediction, voice DNA and trends." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">◐</span>
+      <div class="brand-text">
+        <strong>Nonelab<span class="accent"> Studio</span></strong>
+        <small id="brand-model">viral video intelligence</small>
+      </div>
+    </div>
+    <nav class="topnav">
+      <a href="#analyze">Analyze</a>
+      <a href="#framework">Framework</a>
+      <span id="health-pill" class="pill pill-muted">checking…</span>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Reverse-engineer any short-form video.</h1>
+      <p class="lede">
+        Drop a TikTok, Reel or YouTube Short. Gemini watches the first frame to the last,
+        then grades it through the full <strong>Nonelab</strong> framework — hook score,
+        viral DNA, an adversarial virality verdict, voice DNA and trend fit.
+      </p>
+    </section>
+
+    <section id="analyze" class="panel input-panel">
+      <form id="analyze-form">
+        <div class="source-tabs" role="tablist">
+          <button type="button" class="tab active" data-tab="url" role="tab">Paste a link</button>
+          <button type="button" class="tab" data-tab="file" role="tab">Upload a file</button>
+        </div>
+
+        <div class="tab-body" data-body="url">
+          <label class="field">
+            <span>Video URL</span>
+            <input type="url" id="url" name="url" placeholder="https://www.youtube.com/watch?v=…  or a direct .mp4 link" autocomplete="off" />
+          </label>
+          <p class="hint">YouTube links are read natively. TikTok/Reels: paste a direct video file URL, or upload the file.</p>
+        </div>
+
+        <div class="tab-body hidden" data-body="file">
+          <label class="dropzone" id="dropzone">
+            <input type="file" id="video" name="video" accept="video/*" hidden />
+            <span class="dz-icon" aria-hidden="true">⬆</span>
+            <span class="dz-text">Drop a video here or <u>browse</u></span>
+            <span class="dz-file" id="dz-file"></span>
+          </label>
+        </div>
+
+        <div class="controls">
+          <label class="field">
+            <span>Niche</span>
+            <select id="niche" name="niche"><option value="">Auto-detect</option></select>
+          </label>
+          <label class="field">
+            <span>Platform</span>
+            <select id="platform" name="platform">
+              <option value="">Generic</option>
+              <option value="tiktok">TikTok</option>
+              <option value="reels">Reels</option>
+              <option value="shorts">Shorts</option>
+            </select>
+          </label>
+          <button type="submit" id="submit-btn" class="btn-primary">Analyze video</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="status" class="status hidden" aria-live="polite"></section>
+
+    <section id="results" class="results hidden"></section>
+
+    <section id="framework" class="panel framework">
+      <h2>What the engine measures</h2>
+      <p class="muted">The same seven capabilities as the Nonelab video skill — grounded in the video itself, not a scraped corpus.</p>
+      <div class="framework-grid" id="framework-grid"></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>Nonelab Studio · powered by Google Gemini</span>
+    <span id="foot-model"></span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
