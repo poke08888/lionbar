@@ -1,0 +1,15 @@
+# Secrets / local env
+.env
+
+# Database data (never commit raw MySQL data)
+db_data/
+*.sql
+
+# WordPress runtime junk
+wp-content/upgrade/
+wp-content/cache/
+wp-content/*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
