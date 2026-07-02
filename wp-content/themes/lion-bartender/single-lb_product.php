@@ -138,8 +138,9 @@ $related = array_slice( $related, 0, 3 );
 
 		<!-- mô tả chi tiết (nội dung soạn thảo chính của bài viết) -->
 		<?php
-		$lb_story = get_post_field( 'post_content', $lb_product['ID'] );
-		if ( '' !== trim( (string) $lb_story ) ) :
+		$lb_story = trim( (string) get_post_field( 'post_content', $lb_product['ID'] ) );
+		// Chỉ hiện khi có nội dung soạn thảo riêng, khác với blurb (tránh trùng dòng mô tả ngắn).
+		if ( '' !== $lb_story && $lb_story !== trim( (string) $lb_product['blurb'] ) ) :
 			?>
 		<section class="section--tight pd-story">
 			<div class="eyebrow" style="margin-bottom:14px">Mô tả chi tiết</div>
