@@ -557,3 +557,23 @@ h1,h2,h3{font-family:var(--font-display);text-transform:uppercase;font-weight:70
   .h-xl{font-size:42px}
   .scent-switch__name{font-size:14px}
 }
+
+/* Mô tả chi tiết sản phẩm (post_content của lb_product) */
+.pd-story{border-top:1px solid rgba(201,162,75,.18)}
+.pd-story__body{max-width:72ch;color:var(--cream-2);font-size:16.5px;line-height:1.85}
+.pd-story__body p{margin:0 0 1.05em}
+.pd-story__body p:last-child{margin-bottom:0}
+.pd-story__body h2,.pd-story__body h3,.pd-story__body h4{
+  color:var(--cream);font-family:'Oswald',sans-serif;font-weight:600;
+  letter-spacing:.01em;margin:1.6em 0 .5em;line-height:1.25
+}
+.pd-story__body h2{font-size:24px}
+.pd-story__body h3{font-size:20px}
+.pd-story__body a{color:var(--gold-bright);text-decoration:underline}
+.pd-story__body ul,.pd-story__body ol{margin:0 0 1.05em;padding-left:1.4em}
+.pd-story__body li{margin:.3em 0}
+.pd-story__body img{max-width:100%;height:auto;border-radius:8px}
+.pd-story__body blockquote{
+  margin:1.2em 0;padding:.4em 0 .4em 1.1em;
+  border-left:3px solid var(--gold-deep);color:var(--cream);font-style:italic
+}

@@ -136,6 +136,19 @@ $related = array_slice( $related, 0, 3 );
 			</div>
 		</div>
 
+		<!-- mô tả chi tiết (nội dung soạn thảo chính của bài viết) -->
+		<?php
+		$lb_story = get_post_field( 'post_content', $lb_product['ID'] );
+		if ( '' !== trim( (string) $lb_story ) ) :
+			?>
+		<section class="section--tight pd-story">
+			<div class="eyebrow" style="margin-bottom:14px">Mô tả chi tiết</div>
+			<div class="pd-story__body">
+				<?php echo apply_filters( 'the_content', $lb_story ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- nội dung do admin soạn, đã qua the_content filters. ?>
+			</div>
+		</section>
+		<?php endif; ?>
+
 		<!-- same scent -->
 		<?php if ( $related ) : ?>
 		<section class="section--tight">
