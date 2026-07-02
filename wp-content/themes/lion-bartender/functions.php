@@ -16,6 +16,7 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/woocommerce.php';
 if ( is_admin() ) {
 	require get_template_directory() . '/inc/admin-scent.php';
+	require get_template_directory() . '/inc/admin-product-fields.php';
 	require get_template_directory() . '/inc/admin-product.php';
 }
 
