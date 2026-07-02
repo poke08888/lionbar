@@ -47,15 +47,21 @@ function lb_product_images_box( $post ) {
 		}
 	}
 
-	if ( empty( $ordered ) ) {
-		echo '<p>Hãy chọn <strong>Mùi hương</strong> cho sản phẩm (ô “Mùi hương” bên phải) rồi bấm <strong>Cập nhật / Đăng</strong> để thêm ảnh cho từng mùi.</p>';
-		return;
-	}
-
 	$product = lb_product_data( $post->ID );
 
+	// Mùi (phân loại) trong bộ 6 nhưng chưa gán cho sản phẩm này — dùng cho "Thêm phân loại".
+	$unassigned = array();
+	foreach ( lb_scent_order() as $slug ) {
+		if ( ! in_array( $slug, $ordered, true ) && lb_get_scent( $slug ) ) {
+			$unassigned[] = $slug;
+		}
+	}
+
 	echo '<p class="description" style="margin-bottom:12px">Mỗi mùi (phân loại) có thể có ảnh riêng. Để trống sẽ dùng ảnh mặc định.</p>';
-	echo '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px">';
+	if ( empty( $ordered ) ) {
+		echo '<p style="margin:0 0 12px;color:#646970">Chưa có phân loại nào. Bấm <strong>＋ Thêm phân loại</strong> bên dưới rồi <strong>Cập nhật</strong>.</p>';
+	}
+	echo '<div id="lb-scent-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px">';
 
 	foreach ( $ordered as $slug ) {
 		$s        = lb_get_scent( $slug );
@@ -80,6 +86,33 @@ function lb_product_images_box( $post ) {
 		<?php
 	}
 	echo '</div>';
+
+	// Bản đồ dữ liệu mùi chưa gán để JS dựng thẻ ảnh mới khi bấm "Thêm phân loại".
+	$add_map = array();
+	foreach ( $unassigned as $slug ) {
+		$s                = lb_get_scent( $slug );
+		$add_map[ $slug ] = array(
+			'name'  => $s ? $s['name'] : $slug,
+			'color' => $s ? $s['color'] : '#c9a24b',
+			'img'   => lb_product_image( $product, $slug ),
+		);
+	}
+	?>
+	<div style="margin-top:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+		<select id="lb-add-scent-sel" <?php disabled( empty( $unassigned ) ); ?> style="max-width:220px">
+			<option value=""><?php echo empty( $unassigned ) ? '— Đã thêm tất cả mùi —' : '— Chọn mùi để thêm —'; ?></option>
+			<?php
+			foreach ( $unassigned as $slug ) :
+				$s = lb_get_scent( $slug );
+				?>
+				<option value="<?php echo esc_attr( $slug ); ?>"><?php echo esc_html( $s ? $s['name'] : $slug ); ?></option>
+			<?php endforeach; ?>
+		</select>
+		<button type="button" class="button" id="lb-add-scent-btn" <?php disabled( empty( $unassigned ) ); ?>>＋ Thêm phân loại</button>
+	</div>
+	<p class="description" style="margin-top:6px">Thêm một mùi có sẵn vào sản phẩm này. Thẻ ảnh sẽ xuất hiện ngay; bấm <strong>Cập nhật</strong> để lưu.</p>
+	<script>window.LB_ADD_SCENTS = <?php echo wp_json_encode( $add_map ); ?>;</script>
+	<?php
 }
 
 /* Lưu meta. */
@@ -105,4 +138,18 @@ function lb_save_product_images( $post_id ) {
 		}
 	}
 	update_post_meta( $post_id, 'lb_scent_images', $clean );
+
+	// Gắn thêm mùi (phân loại) được chọn qua nút "Thêm phân loại" — append vào taxonomy.
+	if ( ! empty( $_POST['lb_add_scents'] ) && is_array( $_POST['lb_add_scents'] ) ) {
+		$add = array();
+		foreach ( wp_unslash( $_POST['lb_add_scents'] ) as $slug ) {
+			$slug = sanitize_key( $slug );
+			if ( $slug && term_exists( $slug, 'lb_scent' ) ) {
+				$add[] = $slug;
+			}
+		}
+		if ( $add ) {
+			wp_set_object_terms( $post_id, $add, 'lb_scent', true );
+		}
+	}
 }
