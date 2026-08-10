@@ -72,6 +72,9 @@ jQuery(function ($) {
         '<input type="hidden" name="lb_add_scents[]" value="' + lbEsc(slug) + '" />' +
         '<button type="button" class="button button-small lb-img-pick">Chọn ảnh</button> ' +
         '<button type="button" class="button button-small lb-img-clear" style="display:none">Dùng mặc định</button>' +
+        '<div style="margin-top:8px;border-top:1px solid #f0f0f1;padding-top:8px">' +
+          '<button type="button" class="button-link lb-scent-remove" data-scent="' + lbEsc(slug) + '" data-name="' + lbEsc(s.name) + '" style="color:#b32d2e">✕ Xóa phân loại này</button>' +
+        '</div>' +
       '</div>';
     $('#lb-scent-grid').append(card);
     $sel.find('option[value="' + slug + '"]').remove();
@@ -82,6 +85,31 @@ jQuery(function ($) {
     } else {
       $sel.val('');
     }
+  });
+
+  // Xóa phân loại (mùi) khỏi sản phẩm: gỡ thẻ + đánh dấu để gỡ khi Cập nhật.
+  $(document).on('click', '.lb-scent-remove', function (e) {
+    e.preventDefault();
+    var $btn = $(this);
+    var slug = String($btn.data('scent'));
+    var name = String($btn.data('name'));
+    if (!window.confirm('Xóa phân loại “' + name + '” khỏi sản phẩm này?\nẢnh riêng của mùi này (nếu có) cũng sẽ bị gỡ.')) {
+      return;
+    }
+    var $card = $btn.closest('.lb-img-field');
+    // Thẻ đã lưu (đã gán) -> đánh dấu gỡ khi lưu. Thẻ vừa thêm (chưa lưu) -> chỉ cần bỏ.
+    if ($card.find('input[name="lb_add_scents[]"]').length === 0) {
+      $('#lb-scent-grid').append('<input type="hidden" name="lb_remove_scents[]" value="' + lbEsc(slug) + '" />');
+    }
+    $card.remove();
+    // Trả mùi về ô chọn để có thể thêm lại nếu muốn.
+    var $sel = $('#lb-add-scent-sel');
+    if ($sel.find('option[value="' + slug + '"]').length === 0) {
+      $sel.append('<option value="' + lbEsc(slug) + '">' + lbEsc(name) + '</option>');
+    }
+    $sel.prop('disabled', false);
+    $('#lb-add-scent-btn').prop('disabled', false);
+    $sel.find('option[value=""]').text('— Chọn mùi để thêm —');
   });
 
   // Sau khi thêm term mới qua AJAX, reset preview ảnh ở form thêm.

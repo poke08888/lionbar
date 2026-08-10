@@ -82,18 +82,24 @@ function lb_product_images_box( $post ) {
 			<input type="hidden" class="lb-img-id" name="lb_scent_images[<?php echo esc_attr( $slug ); ?>]" value="<?php echo esc_attr( $att ); ?>" />
 			<button type="button" class="button button-small lb-img-pick">Chọn ảnh</button>
 			<button type="button" class="button button-small lb-img-clear" <?php echo $is_over ? '' : 'style="display:none"'; ?>>Dùng mặc định</button>
+			<div style="margin-top:8px;border-top:1px solid #f0f0f1;padding-top:8px">
+				<button type="button" class="button-link lb-scent-remove" data-scent="<?php echo esc_attr( $slug ); ?>" data-name="<?php echo esc_attr( $name ); ?>" style="color:#b32d2e">✕ Xóa phân loại này</button>
+			</div>
 		</div>
 		<?php
 	}
 	echo '</div>';
 
-	// Bản đồ dữ liệu mùi chưa gán để JS dựng thẻ ảnh mới khi bấm "Thêm phân loại".
+	// Bản đồ dữ liệu TẤT CẢ mùi để JS dựng thẻ ảnh khi thêm (kể cả mùi vừa xóa muốn thêm lại).
 	$add_map = array();
-	foreach ( $unassigned as $slug ) {
-		$s                = lb_get_scent( $slug );
+	foreach ( lb_scent_order() as $slug ) {
+		$s = lb_get_scent( $slug );
+		if ( ! $s ) {
+			continue;
+		}
 		$add_map[ $slug ] = array(
-			'name'  => $s ? $s['name'] : $slug,
-			'color' => $s ? $s['color'] : '#c9a24b',
+			'name'  => $s['name'],
+			'color' => $s['color'],
 			'img'   => lb_product_image( $product, $slug ),
 		);
 	}
@@ -138,6 +144,21 @@ function lb_save_product_images( $post_id ) {
 		}
 	}
 	update_post_meta( $post_id, 'lb_scent_images', $clean );
+
+	// Gỡ mùi (phân loại) bị xóa qua nút "Xóa phân loại" — xử lý TRƯỚC phần thêm
+	// để nếu user xóa rồi thêm lại cùng một mùi thì kết quả là "được thêm".
+	if ( ! empty( $_POST['lb_remove_scents'] ) && is_array( $_POST['lb_remove_scents'] ) ) {
+		$rm = array();
+		foreach ( wp_unslash( $_POST['lb_remove_scents'] ) as $slug ) {
+			$slug = sanitize_key( $slug );
+			if ( $slug ) {
+				$rm[] = $slug;
+			}
+		}
+		if ( $rm ) {
+			wp_remove_object_terms( $post_id, $rm, 'lb_scent' );
+		}
+	}
 
 	// Gắn thêm mùi (phân loại) được chọn qua nút "Thêm phân loại" — append vào taxonomy.
 	if ( ! empty( $_POST['lb_add_scents'] ) && is_array( $_POST['lb_add_scents'] ) ) {
