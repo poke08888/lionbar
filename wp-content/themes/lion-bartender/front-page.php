@@ -128,7 +128,7 @@ $trust = array(
 				<a class="tlink" href="<?php echo esc_url( lb_shop_url() ); ?>"><?php lb_the_text( 'best_link' ); ?> <?php lb_the_icon( 'arrow' ); ?></a>
 			</div>
 			<div class="pgrid reveal">
-				<?php foreach ( $products as $p ) {
+				<?php foreach ( array_slice( $products, 0, 3 ) as $p ) {
 					echo lb_product_card( $p ); // phpcs:ignore
 				} ?>
 			</div>
