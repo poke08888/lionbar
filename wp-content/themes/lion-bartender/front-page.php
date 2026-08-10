@@ -95,7 +95,7 @@ $trust = array(
 				<div class="feature__grid">
 					<div class="feature__media">
 						<div class="hero__halo" style="width:90%;background:radial-gradient(circle, rgba(47,134,196,.3), transparent 62%)"></div>
-						<img src="<?php echo esc_url( lb_asset( 'bottle-ocean-club.png' ) ); ?>" alt="3-in-1" style="position:relative;z-index:2;max-height:520px" />
+						<img src="<?php echo esc_url( lb_image_url( 'feat_image' ) ); ?>" alt="3-in-1" style="position:relative;z-index:2;max-height:520px" />
 					</div>
 					<div class="feature__body">
 						<div class="eyebrow"><?php lb_the_text( 'feat_eyebrow' ); ?></div>

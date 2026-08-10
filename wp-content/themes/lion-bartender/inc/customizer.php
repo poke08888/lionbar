@@ -110,11 +110,34 @@ function lb_text_fields() {
 	);
 }
 
+/**
+ * Danh mục các trường ẢNH (media). Mỗi trường tạo một WP_Customize_Image_Control.
+ * default = ảnh gốc bundled trong theme (để trống control sẽ trả về ảnh này).
+ */
+function lb_image_fields() {
+	return array(
+		'feat_image' => array(
+			'sec'         => 'lb_sec_feature',
+			'label'       => 'Ảnh chai (mục 3-in-1)',
+			'description' => 'Ảnh chai bên trái mục 3-in-1. Để trống sẽ dùng ảnh mặc định.',
+			'default'     => lb_asset( 'bottle-ocean-club.png' ),
+		),
+	);
+}
+
 /** Lấy text (đã chỉnh hoặc mặc định). */
 function lb_text( $key ) {
 	$fields  = lb_text_fields();
 	$default = isset( $fields[ $key ] ) ? $fields[ $key ]['default'] : '';
 	return get_theme_mod( 'lb_' . $key, $default );
+}
+
+/** URL ảnh (đã chỉnh trong Tùy biến hoặc ảnh mặc định). */
+function lb_image_url( $key ) {
+	$fields  = lb_image_fields();
+	$default = isset( $fields[ $key ] ) ? $fields[ $key ]['default'] : '';
+	$val     = get_theme_mod( 'lb_' . $key, $default );
+	return $val ? $val : $default;
 }
 
 /** In text dạng plain (escaped). */
@@ -186,6 +209,30 @@ function lb_customize_register( $wp_customize ) {
 				'label'   => $f['label'],
 				'section' => $f['sec'],
 				'type'    => $control,
+			)
+		);
+	}
+
+	/* ---- Trường ẢNH: dùng WP_Customize_Image_Control (bộ chọn Thư viện Media) ---- */
+	foreach ( lb_image_fields() as $key => $f ) {
+		$sid = 'lb_' . $key;
+		$wp_customize->add_setting(
+			$sid,
+			array(
+				'default'           => $f['default'],
+				'sanitize_callback' => 'esc_url_raw',
+				'transport'         => 'refresh',
+			)
+		);
+		$wp_customize->add_control(
+			new WP_Customize_Image_Control(
+				$wp_customize,
+				$sid,
+				array(
+					'label'       => $f['label'],
+					'description' => isset( $f['description'] ) ? $f['description'] : '',
+					'section'     => $f['sec'],
+				)
 			)
 		);
 	}
